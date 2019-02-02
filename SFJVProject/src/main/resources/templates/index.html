@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<title> Facture </title>
+		 <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+         <!-- favicon -->
+        <link rel="shortcut icon"  th:href="@{/profile/images/favicon.png}"  href="/profile/images/favicon.png">
+        <link rel="apple-touch-icon" th:href="@{/profile/images/apple-touch-icon-57x57.png}" href="/profile/images/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="72x72" th:href="@{/profile/images/apple-touch-icon-72x72.png}" href="/profile/images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" th:href="@{/profile/images/apple-touch-icon-114x114.png}" href="/profile/images/apple-touch-icon-114x114.png">
+		<link rel="stylesheet" href="/assets/css/main.css" th:href="@{/assets/css/main.css}" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" th:href="@{/assets/css/noscript.css}" /></noscript>
+	</head>
+	<body class="landing is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a th:href="@{/}">Facture</a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span><strong>Menu</strong></span></a>
+									<div id="menu">
+										<ul>
+											<li><a th:href="@{/}"><strong>Home</strong></a></li>
+											<li th:if="${checked == true}"><a th:href="@{/user/profile}"><strong>My Profile</strong></a></li>
+<!-- 											<li><a href="generic.html">Generic</a></li> -->
+<!-- 											<li><a href="elements.html">Elements</a></li> -->
+											<li th:if="${checked == false}"><a th:href="@{user/register}"><strong>Sign Up</strong></a></li>
+											<li th:if="${checked == true}"><a th:href="@{home}"><strong>Admin Page</strong></a></li>
+										
+											<li th:if="${loginid != 'Log in'}"><a  th:text="'Welcome' +' '+ ${loginid}"><strong>Log In</strong></a></li>								
+											<li th:if="${loginid == 'Log in'}"><a th:href="@{login}" th:text="${loginid}"><strong>Log In</strong></a></li>
+										    <li th:if="${checked == true}" style="margin-top: 120%"> <form method="post"  th:action="@{/logout}" >
+                                            <input class="btn btn-link btn-block" style="text-decoration:none" type="submit" value="Logout" title="Logout"  />
+                                            </form> </li>
+										</ul>
+				
+									</div>
+									
+										
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<h2>FACTURE</h2>
+							<p>1m3 =1000 litres<br />
+							1 kWh = 1 ampoule de 100 Watts<br />
+							 allumée pendant 10 heures</p>
+							<ul class="actions special" >
+								<li th:if="${checked} == false"><a th:href="@{login}"  th:text="${loginid}" class="button primary">Log In</a></li>
+							    <li th:if="${checked} == true"><a th:href="@{login}"  th:text="'Connect as' +' '+ ${loginid}" class="button primary">Log In</a></li>    
+							</ul>
+						</div>
+						<a href="#one" class="more scrolly "><strong>Learn More</strong></a>
+					</section>
+
+				<!-- One -->
+					<section id="one" class="wrapper style1 special">
+						<div class="inner">
+							<header class="major">
+								<h2>This Video explains how this WebSite Works</h2>
+							<video width="90%" height="100%" controls
+							th:poster="@{/video/pic.png}">
+                                                        <source src="video/SFacture.mp4" th:src="@{/video/SFacture.mp4}" type="video/mp4">
+                                                         </video>
+							</header>
+							<ul class="icons major">
+								<li><span class="icon fa-diamond major style1"><span class="label">Lorem</span></span></li>
+								<li><span class="icon fa-heart-o major style2"><span class="label">Ipsum</span></span></li>
+								<li><span class="icon fa-code major style3"><span class="label">Dolor</span></span></li>
+							</ul>
+							<a href="#two" class="more scrolly "><i class="fa fa-arrow-down fa-1x " aria-hidden="true"></i></a>
+						</div>
+					</section>
+
+				<!-- Two -->
+					<section id="two" class="wrapper alt style2 ">
+						<section class="spotlight">
+							<div class="image"><img src="/assets/images/pic01.png" alt="Water" /></div><div class="content">
+								<h2>Principaux point  <br />
+								de consommation d'eau</h2>
+								<p>♦ Une chasse d'eau : de 10 à 12 litres<br />
+♦ Une douche : de 60 à 80 litres<br />
+♦ Un bain : de 150 à 200 litres<br />
+♦ Un lave-linge : de 70 à 120 litres<br />
+♦ Un lave-vaisselle : de 25 à 40 litres<br />
+♦ Le lavage de votre automobile :200 litres environ<br />
+♦ Arrosage de jardin: De 15 à 20 l /m2.</p>
+							</div>
+						</section>
+						<section class="spotlight">
+							<div class="image"><img src="/assets/images/pic02.png" alt="Electricity" /></div><div class="content">
+								<h2>Controle et suivi de la consommation </h2>
+<!-- 								<br /> -->
+<!-- 								elementum magna</h2> -->
+								<p>Pour contrôler votre consommation, nous vous conseillons de faire un relevé mensuel et de vérifier les index des factures que vous recevez avec ceux du compteur.
+Les appareils de comptage sont librement accessibles, aussi vous pouvez contrôler vous-même et à tout moment l’index du compteur exprimer en m3 (eau) ou en kWh (électricité).
+Nous vous conseillons de vérifier votre consommation tous les mois.</p>
+							</div>
+	
+						</section>
+						
+
+					</section>
+					
+							
+
+				<!-- Three -->
+					<section id="three" class="wrapper style3 special">
+						<div class="inner">
+							<header class="major">
+								<h2>Comprendre le calcul de vos consommations</h2>
+								<p>Dans le cadre de votre contrat d'abonnement, Lydec met à votre disposition un compteur d'eau et un compteur d'électricité. 
+								Les index sont relevés mensuellement au niveau de votre local.</p>
+							</header>
+							<ul class="features">
+								<li class="icon fa-flag-o">
+									<h3>Lecture du compteur d'eau</h3>
+									<p>Les mètres cubes sont généralement inscrits sur fond noir. Ils constituent l'index (le niveau) de votre consommation, que vous retrouvez sur votre facture.
+									 Les numéros inscrits sur fond blanc ou rouge correspondent aux unités inférieures au m3, c'est-à-dire les litres.</p>
+								</li>
+								<li class="icon fa-flag-o">
+									<h3>Lecture de mon compteur d'électricité</h3>
+									<p>Tous les chiffres inscrits sur votre compteur sont pris en compte et reportés sur votre facture.</p>
+								</li>
+								<li class="icon fa-flag-o">
+									<h3>Bon a Savoire</h3>
+									<p>1m3 =1000 litres <br/>
+                              1 kWh = 1 ampoule de 100 Watts allumée pendant 10 heures</p>
+								</li>
+								<li class="icon fa-flag-o">
+									<h3>Bon a Savoire</h3>
+									<p>Vos compteurs d'électricité et d'eau sont respectivement conformes à la norme marocaine NM 06.4.001 et la norme internationale ISO standard 4046/1. Pour une facturation précise, Lydec veille à leur bon fonctionnement,
+									 assure leur maintenance et les remplace dès qu'ils ne fonctionnent plus de manière satisfaisante.</p>
+								</li>
+								
+<!-- 								<li class="icon fa-heart-o"> -->
+<!-- 									<h3>Aenean Primis</h3> -->
+<!-- 									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p> -->
+<!-- 								</li> -->
+<!-- 								<li class="icon fa-flag-o"> -->
+<!-- 									<h3>Tortor Ut</h3> -->
+<!-- 									<p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p> -->
+<!-- 								</li> -->
+							</ul>
+							<a href="#cta" class="more scrolly "><i class="fa fa-arrow-down fa-1x" aria-hidden="true"></i></a>
+						</div>
+					</section>
+
+				<!-- CTA -->
+					<section id="cta" class="wrapper style4">
+						<div class="inner">
+							<header>
+								<h2>La relève des consommations</h2>
+								<p>Pour établir votre consommation, notre agent releveur procède chaque mois à la lecture de vos compteurs d'électricité et d'eau.
+								 Cette visite est aussi l'occasion de vérifier le bon fonctionnement de votre compteur.</p>
+							</header>
+							<ul class="actions stacked">
+								<li th:if="${checked == true}"><a th:href="@{home}" class="button fit primary">ADMIN PAGE</a></li>
+								<li th:if="${checked == false}"><a th:href="@{login}" class="button fit primary">Log In</a></li>
+								
+								<li th:if="${checked == false}"><a th:href="@{user/register}" class="button fit">Sign Up</a></li>
+								<li th:if="${checked == true}">
+								<form method="post" th:action="@{/logout}">
+								<button type="submit" class="button fit">Logout</button>
+								</form>
+								</li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Adnan</li><li>Designed By Adnan</li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/jquery.min.js" th:src="@{/assets/js/jquery.min.js}" ></script>
+			<script src="/assets/js/jquery.scrollex.min.js" th:src="@{/assets/js/jquery.scrollex.min.js}"></script>
+			<script src="/assets/js/jquery.scrolly.min.js" th:src="@{/assets/js/jquery.scrolly.min.js}"></script>
+			<script src="/assets/js/browser.min.js" th:src="@{/assets/js/browser.min.js}"></script>
+			<script src="/assets/js/breakpoints.min.js" th:src="@{/assets/js/breakpoints.min.js}"></script>
+			<script src="/assets/js/util.js" th:src="@{/assets/js/util.js}"></script>
+			<script src="/assets/js/main.js" th:src="@{/assets/js/main.js}"></script>
+
+	</body>
+</html>

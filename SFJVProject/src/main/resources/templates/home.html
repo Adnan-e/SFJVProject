@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace ="template :: head"></head>
+<body>
+
+<header th:replace ="template :: header"></header>
+<div class="page-content d-flex align-items-stretch">
+<nav th:replace ="template :: navBar"></nav>
+<div class="content-inner">
+ <div class="page">
+
+<header class="page-header"><div th:replace="template :: pageHeader"></div> </header>
+              
+            <section class="forms pb-0"> 
+            <div class="container-fluid">
+              <div class="row">
+              
+            <div class="col-lg-4" >
+                  <div class="card">
+                    <div class="card-close">
+                      <div class="dropdown">
+                        <button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                      </div>
+                    </div>
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">New Facture</h3>
+                    </div>
+                    <div class="card-body text-center">
+                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info btn-block m-b-10"><i class="fa fa-pencil mr-1 text-green" aria-hidden="true"></i> Create Facture </button>    
+                      <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                        <div role="document" class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 id="exampleModalLabel" class="modal-title">Create Facture</h4>
+                              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span class="text-danger" aria-hidden="true">X</span></button>
+                            </div>
+                            <div class="modal-body">
+                              <form method="post" th:action="@{/home/create}"  >
+                                <div class="form-group"  >
+                                  <input  type="text"  name="consomation" required placeholder="Consommation" class="form-control input-default ">
+                                </div>
+                                <div class="form-group">       
+                                  <input  type="text"   placeholder="Annee" required name="annee" class="form-control input-default ">
+                                </div>
+                                <div class="form-group">       
+                             <select   name="month" id="month" class="form-control">
+                              <option value=" ">Month</option>
+                              <option value="January">January</option>
+                              <option value="Febuary">Febuary</option>
+                              <option value="March">March</option>
+                              <option value="April">April</option>
+                              <option value="May">May</option>
+                              <option value="Juni">Juni</option>
+                              <option value="Juli">Juli</option>
+                              <option value="August">August</option>
+                              <option value="September">September</option>
+                              <option value="October">October</option>
+                              <option value="November">November</option>
+                              <option value="December">December</option>
+                            </select>
+                                </div>
+                           <div class=" form-group " sec:authorize="hasRole('ROLE_ROOT')" >
+                                 <select   name="c_lient_id" id="c_lient_id" class="form-control">
+                               <option value="">Client</option>
+                               <option th:each="cl:${myclients}" th:value=${cl.id}  th:text="${cl.id}"></option>
+                                </select>
+                                </div>
+                            <div class="form-group">
+                            <select  name="localeAdresse"  class="form-control">
+                            <option value="" th:text="locale"></option>
+                              <option th:each="l:${userLocales}" th:value="${l.adresse}"  th:text="${l.adresse}"></option>
+                            </select>    
+                             </div>
+                             <div class="form-group">
+                             <label for="optionsRadios1" class="radio-inline mr-3 "><input class="mr-1" id="optionsRadios1" th:value="Water" checked type="radio" name="t_type">Water</label>
+                             <label for="optionsRadios2" class="radio-inline mr-3 "><input class="mr-1" id="optionsRadios2" th:value="Electricity" type="radio" name="t_type">Electricity</label>
+                             </div>
+                              <div class="modal-footer">
+                              <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                              <button type="submit" class="btn btn-info">Save changes</button>
+                               </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  
+                  
+                  
+                  
+                    <div class="col-lg-4" sec:authorize="hasRole('ROLE_ROOT')">
+                  <div class="card">
+                    <div class="card-close">
+                      <div class="dropdown">
+                        <button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                      </div>
+                    </div>
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">Remove Existing User</h3>
+                    </div>
+                    <div class="card-body text-center">
+                    <button type="button" data-toggle="modal" data-target="#myOldUserModal" class="btn btn-info btn-block m-b-10"><i class="fa fa-user-times mr-1 text-danger" aria-hidden="true"></i> Remove User </button>    
+                      <div id="myOldUserModal" tabindex="-1" role="dialog" aria-labelledby="OldUserModalLabel" aria-hidden="true" class="modal fade text-left">
+                        <div role="document" class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 id="OldUserModalLabel" class="modal-title">Remove Existing User</h4>
+                              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span class="text-danger" aria-hidden="true">X</span></button>
+                            </div>
+                            <div class="modal-body">
+                              <form method="post" th:action="@{/user/remove}"  >
+                               
+                           <div class=" form-group " sec:authorize="hasRole('ROLE_ROOT')" >
+                                 <select   name="u_ser_id" id="u_ser_id" class="form-control">
+                               <option value="">User</option>
+                               <option th:if="${u.id} != ${user_id}" th:each="u:${myusers}" th:value=${u.id}  th:text="${u.id}"></option>
+                                </select>
+                                </div>
+                              <div class="modal-footer">
+                              <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                              <button type="submit" class="btn btn-info">Remove</button>
+                               </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   </div>
+                  </div>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                   <div class="col-lg-4" sec:authorize="hasRole('ROLE_ROOT')">
+                  <div class="card">
+                    <div class="card-close">
+                      <div class="dropdown">
+                        <button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                      </div>
+                    </div>
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">Forgot Password Recovery</h3>
+                    </div>
+                    <div class="card-body text-center">
+                    <button type="button" data-toggle="modal" data-target="#myNewUserModal" class="btn btn-info btn-block m-b-10"><i class="fa fa-pencil-square-o mr-1 text-green" aria-hidden="true"></i> Recovery </button>    
+                      <div id="myNewUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModalLabel" aria-hidden="true" class="modal fade text-left">
+                        <div role="document" class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 id="newUserModalLabel" class="modal-title">Forgot User Password Recovery</h4>
+                              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span class="text-danger" aria-hidden="true">X</span></button>
+                            </div>
+                            <div class="modal-body">
+                              <form method="post" th:action="@{/user/recovery}"  >
+                                <div class="form-group"  >
+                                  <input  type="text" required name="username_" placeholder="Username" class="form-control input-default ">
+                                </div>
+                                <div class="form-group">       
+                                  <input  type="password"  required placeholder="New Password" name="newPassword" class="form-control input-default ">
+                                </div>
+                                      
+                              <div class="modal-footer">
+                              <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                              <button type="submit" class="btn btn-info">Save changes</button>
+                               </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+              
+              
+              
+              
+             
+              
+ 
+             </div>
+            </div>
+          </section>
+           
+            <section class="tables pt-0"> 
+              <div class="container-fluid" >
+              <div class="row">
+                <div class="col-lg ">                           
+                  <div class="card">
+                    <div class="card-close">
+                      <div class="dropdown">
+                        <button type="button" id="closeCard3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard3" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                      </div>
+                    </div>
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4">Search </h3>
+                    </div>
+                    <div class="card-body">
+                      <form class="form-inline" th:action="@{/home}">
+                       
+                       <div class=" mr-2 ml-2">
+                                  <input size="10%" type="text"  name="consommation_s" placeholder="Consommation" class="form-control input-default ">
+                                </div>
+                                <div class=" mr-2 ">
+                                  <input size="6%" type="text"  name="anneeMin_s" placeholder="Annee Min" class="form-control input-default ">
+                                </div>
+                                <div class=" mr-2">
+                                  <input size="7%" type="text"  name="anneeMax_s" placeholder="Annee Max" class="form-control input-default ">
+                                </div>
+                                <div class=" mr-2 mt-2">
+                                <select   name="mois_s" id="mois_s" class="form-control">
+                              <option value="">Month</option>
+                              <option value="January">January</option>
+                              <option value="Febuary">Febuary</option>
+                              <option value="March">March</option>
+                              <option value="April">April</option>
+                              <option value="May">May</option>
+                              <option value="Juni">Juni</option>
+                              <option value="Juli">Juli</option>
+                              <option value="August">August</option>
+                              <option value="September">September</option>
+                              <option value="October">October</option>
+                              <option value="November">November</option>
+                              <option value="December">December</option>
+                            </select>
+                                </div>
+                                
+                                 <div class=" mr-2 mt-2 " sec:authorize="hasRole('ROLE_ROOT')">
+                                 <select name="client_id_s" id="client_id" class="form-control">
+                               <option value="">Client</option>
+                               <option th:each="cl:${myclients}" th:value=${cl.id}  th:text="${cl.id}"></option>
+                                </select>
+                                </div>
+                                <div class= "mt-2 " th:if=${mylocales}>
+                                 <select   name="locale_id_s" id="locale_id" class="form-control">
+                               <option value="">Locale</option>
+                                <option th:each="lo:${mylocales}" th:value="${lo.adresse}"  th:text="${lo.adresse}"></option>
+                                </select>
+                                </div>
+                        <div class=" mr-2 card-body text-center">
+                          <button type="submit" class="btn btn-info btn-block m-b-10"><i class="fa fa-search mr-1" aria-hidden="true"></i> Search</button>
+                          </div>
+                         
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                
+           
+              </div>
+              <div class="row">
+           <div class="col-lg">
+                  <div class="card">
+                    <div class="card-close">
+                      <div class="dropdown">
+                        <button type="button" id="closeCard3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard3" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                      </div>
+                    </div>
+                    <div class="card-header d-flex align-items-center ">
+                    <h3 class="h4 "><i th:class="${online =='ROOT'?'fa fa-star fa mr-1 text-gd' : 'fa fa-star text-secondary fa mr-1'}" aria-hidden="true"></i> Facture </h3>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">                       
+                        <table class="table table-striped table-hover">
+                          <thead>
+                            <tr>
+                               <th><i class="fa fa-cog fa-lg" ></i></th>  
+                               <th>Facture</th>
+                              <th sec:authorize="hasRole('ROLE_ROOT')" class="text-blue">Client</th> 
+                              <th>Consommation</th>
+                              <th>MontantHt</th>
+                              <th> </th>
+                              <th>MontantTva</th>
+                              <th>MontantTtc </th>
+                              <th > </th>
+                              <th>Locale</th>
+                              <th>Mois</th>
+                              <th>Annee</th>
+                             
+                             
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr th:each="f:${factures}">
+                           
+                              <td><a th:href="@{/fconsommation(fSelected=${f.id},lastPage=${lastPage},page=${currentPage},s_id=${s_id})}">
+                              <i th:class="${f.id == fSelected }?'fa fa-eye fa-lg text-green ':'fa fa-eye-slash fa-lg '" aria-hidden="true"></i></a> <br/>
+                              <a th:href="@{/home/remove(idSelected=${f.id},lastPage=${lastPage},page=${currentPage},s_id=${s_id})}"><i  class="fa fa-trash fa-lg text-red "></i></a></td> 
+                              <td th:text="${f.id}"></td>
+                              <td th:text="${f.client.id}" sec:authorize="hasRole('ROLE_ROOT')"></td>                               
+                              <td th:text="${f.consomation}"></td>
+                              <td th:text="${f.montantHt}"></td>
+                              <td><i class="fa fa-usd text-warning fa-lg" aria-hidden="true"></i></td>
+                              <td th:text="${f.montantTva}"></td>
+                              <td th:text="${f.montantTtc}"></td>
+                              <td><i class="fa fa-usd text-warning fa-lg" aria-hidden="true"></i></td>
+                              <td th:text="${f.locale.adresse}"></td>                              
+                              <td th:text="${f.mois}"></td>
+                              <td th:text="${f.annee}"></td>     
+                              
+                            </tr>
+                          </tbody>
+                        </table>
+                     </div>
+                     <ul class="pagination mt-3 " >
+                     <li class="page-item"><a class="page-link" th:if="${currentPage}>0" th:href="@{/home(page=${currentPage}-1 ,s_id=${s_id})}" > Previous</a></li>
+                     <li class="page-item" ><a th:unless="${currentPage}>0" class="page-link disabled " >Previous </a></li>
+                     
+                     <li  th:class="${currentPage}==${status.index}?'page-item active':'page-item'"  th:each="p,status:${pages}"  ><a class="page-link" th:text="${status.index}"
+                      th:href="@{/home(page=${status.index},s_id=${s_id})}" ></a></li>
+                     
+                     <li class="page-item"><a class="page-link" th:if="${currentPage} < ${lastPage}" th:href="@{/home(page=${currentPage}+1,s_id=${s_id}) }" >Next</a></li>
+                     <li class="page-item" ><a th:unless="${currentPage} < ${lastPage}" class="page-link disabled " >Next </a></li>
+                      </ul> 
+                    </div>   
+                  </div>
+                </div>
+                <div class="col-lg-auto">
+                  <div class="card">
+                    <div class="card-close">
+                      <div class="dropdown">
+                        <button type="button" id="closeCard3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard3" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                      </div>
+                    </div>
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4"><i th:class="${online} =='ROOT' AND ${online} != null?'fa fa-star fa mr-1 text-gd' : 'fa fa-star text-secondary fa mr-1'" aria-hidden="true"></i> Unpaid Bills</h3>
+                    </div>
+                    <div class="card-body" >
+                      <div class="table-responsive">                       
+                        <table class="table table-striped table-hover">
+                          <thead>
+                           <tr>
+                             <th><i class="fa fa-cog fa-lg" ></i></th> 
+                             <th sec:authorize="hasRole('ROLE_ROOT')" class="text-blue">Client</th>
+                             <th>Facture</th>
+                              <th>MontantTtc</th>
+                               <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>                              
+                              <tr th:each="fNp:${userFacturesNP}">
+                              <td><a th:href="@{/fconsommation(fSelected=${fNp.id},lastPage=${lastPageNp},pageNp=${currentPageNp},s_id=${s_id})}">
+                              <i th:class="${fNp.id == fSelected }?'fa fa-eye fa-lg text-green':'fa fa-eye-slash fa-lg '" aria-hidden="true"></i>
+                              </a></td>
+                              <td th:text="${fNp.client.id}"  sec:authorize="hasRole('ROLE_ROOT')"></td>
+                              <td th:text="${fNp.id}"></td>
+                              <td th:text="${fNp.montantTtc}"></td> 
+                              <td><i class="fa fa-usd text-warning fa-lg" aria-hidden="true"></i></td>
+                              </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <ul class="pagination mt-3 " >
+                      <li class="page-item"><a class="page-link" th:if="${currentPageNp}>0" th:href="@{/home(pageNp=${currentPageNp}-1) }" > Previous</a></li>
+                      <li class="page-item" ><a th:unless="${currentPageNp}>0" class="page-link disabled " >Previous </a></li>       
+                      <li  th:class="${currentPageNp}==${status.index}?'page-item active':'page-item'"  th:each="p,status:${pagesNp}"  ><a class="page-link" th:text="${status.index}"
+                              th:href="@{/home(pageNp=${status.index})}" ></a></li>
+                      <li class="page-item"><a class="page-link" th:if="${currentPageNp} < ${lastPageNp}" th:href="@{/home(pageNp=${currentPageNp}+1) }" >Next</a></li>
+                      <li class="page-item" ><a th:unless="${currentPageNp} < ${lastPageNp}" class="page-link disabled " >Next </a></li>
+                      </ul> 
+                    </div>
+                  </div>
+                </div>
+                
+                
+                <form  th:action="@{/fconsommation}" th:if="${factureName}" >
+                <div class="col-lg-auto" >
+                  <div class="card">
+                    <div class="card-close">
+                      <div class="dropdown">
+                        <button type="button" id="closeCard3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard3" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                      </div>
+                    </div>
+                    <div class="card-header d-flex align-items-center">
+                      <h3 class="h4" th:text="'Consommation of :'+' '+${factureName.facture.id}"> Facture Consommation </h3>
+                    </div>
+                    <div class="card-body" >
+                      <div class="table-responsive">                       
+                        <table class="table table-striped table-hover">
+                          <thead>
+                           <tr>
+<!--                              <th sec:authorize="hasRole('ROLE_ROOT')" class="text-blue">Client</th> -->
+<!--                               <th>Facture</th>    -->
+                              <th>Tranche</th>
+                              <th>Tarif</th>
+                              <th><i class="fa fa-usd text-warning fa-lg" aria-hidden="true"></i></th>
+                              <th>Consommation</th>
+                              <th>Montant</th>          
+                              <th><i class="fa fa-usd text-warning fa-lg" aria-hidden="true"></i></th>
+                            </tr>
+                          </thead>
+                          <tbody>                              
+                              <tr th:each="fc:${trancheConsommations}">
+<!--                               <td th:text="${fc.facture.client.id}"  sec:authorize="hasRole('ROLE_ROOT')"></td> -->
+<!--                               <td ></td> -->
+                              <td th:text="${fc.tranche.id}" ></td>
+                              <td th:text="${fc.tranche.montant}" ></td>
+                              <td><i class="fa fa-usd text-warning fa-lg" aria-hidden="true"></i></td>
+                              <td th:text="${fc.consommation}" ></td> 
+                              <td th:text="${fc.montant}" ></td> 
+                              <td><i class="fa fa-usd text-warning fa-lg" aria-hidden="true"></i></td>                            
+                              </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
+                </form>
+            </div>
+            </div>
+          </section>
+
+               
+                  
+                    
+                 
+
+ <footer th:replace ="template :: footer"></footer>
+<div th:replace ="template :: script"></div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,241 @@
+
+<!doctype html>
+<html class="no-js" lang="en"
+     xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+        <!-- title -->
+        <title th:text="${titel}">My Profile</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+        <meta name="author" content="ThemeZaa">
+        <!-- description -->
+        <meta name="description" content="POFO is a highly creative, modern, visually stunning and Bootstrap responsive multipurpose agency and portfolio HTML5 template with 25 ready home page demos.">
+        <!-- keywords -->
+        <meta name="keywords" content="creative, modern, clean, bootstrap responsive, html5, css3, portfolio, blog, agency, templates, multipurpose, one page, corporate, start-up, studio, branding, designer, freelancer, carousel, parallax, photography, personal, masonry, grid, coming soon, faq">
+        <!-- favicon -->
+        <link rel="shortcut icon"  th:href="@{/profile/images/favicon.png}"  href="/profile/images/favicon.png">
+        <link rel="apple-touch-icon" th:href="@{/profile/images/apple-touch-icon-57x57.png}" href="/profile/images/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="72x72" th:href="@{/profile/images/apple-touch-icon-72x72.png}" href="/profile/images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" th:href="@{/profile/images/apple-touch-icon-114x114.png}" href="/profile/images/apple-touch-icon-114x114.png">
+        <!-- animation -->
+        <link rel="stylesheet" th:href="@{/profile/css/animate.css}" href="/profile/css/animate.css" />
+        <!-- bootstrap -->
+        <link rel="stylesheet" th:href="@{/profile/css/bootstrap.min.css}" href="/profile/css/bootstrap.min.css" />
+        <!-- et line icon --> 
+        <link rel="stylesheet" th:href="@{/profile/css/et-line-icons.css}" href="/profile/css/et-line-icons.css" />
+        <!-- font-awesome icon -->
+<!--         <link rel="stylesheet" th:href="@{/profile/css/font-awesome.min.css}" href="/profile/css/font-awesome.min.css" /> -->
+        <link rel="stylesheet" href="/others/vendor/font-awesome/css/font-awesome.min.css"
+                            th:href="@{/others/vendor/font-awesome/css/font-awesome.min.css}" >
+        <!-- themify icon -->
+        <link rel="stylesheet" th:href="@{/profile/css/themify-icons.css}" href="/profile/css/themify-icons.css">
+        <!-- swiper carousel -->
+        <link rel="stylesheet" th:href="@{/profile/css/swiper.min.css}" href="/profile/css/swiper.min.css">
+        <!-- justified gallery  -->
+        <link rel="stylesheet" th:href="@{/profile/css/justified-gallery.min.css}" href="/profile/css/justified-gallery.min.css">
+        <!-- magnific popup -->
+        <link rel="stylesheet" th:href="@{/profile/css/magnific-popup.css}" href="/profile/css/magnific-popup.css" />
+        <!-- revolution slider -->
+        <link rel="stylesheet" type="text/css" th:href="@{/profile/revolution/css/settings.css}" href="/profile/revolution/css/settings.css" media="screen" />
+        <link rel="stylesheet" type="text/css" th:href="@{/profile/revolution/css/layers.css}" href="/profile/revolution/css/layers.css">
+        <link rel="stylesheet" type="text/css" th:href="@{/profile/revolution/css/navigation.css}" href="/profile/revolution/css/navigation.css">
+        <!-- bootsnav -->
+        <link rel="stylesheet" th:href="@{/profile/css/bootsnav.css}" href="/profile/css/bootsnav.css">
+        <!-- style -->
+        <link rel="stylesheet" th:href="@{/profile/css/style.css}" href="/profile/css/style.css" />
+        <!-- responsive css -->
+        <link rel="stylesheet" th:href="@{/profile/css/responsive.css}" href="/profile/css/responsive.css" />
+        <!--[if IE]>
+            <script src="js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body class="width-100">
+        <!-- start header -->
+        <header>
+            <!-- start navigation -->
+            <nav class="navbar navbar-default bootsnav bg-transparent nav-top-scroll">
+                <div class="container-fluid nav-header-container height-100px padding-three-half-lr xs-height-70px xs-padding-15px-lr">
+                    <!-- start header navigation -->
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-6 hidden-xs text-left">
+                            <div class="social-icon">
+                                <a th:href="@{/}" title="Main Page" ><i class="fa fa-adn fa-2x "></i></a>
+                                <a th:href="@{/home}" title="Home" ><i class="fa fa-home fa-2x " aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <!-- start logo -->
+                       
+<!--                         <div class="col-md-4 col-sm-4 col-xs-6 text-center xs-text-left "> -->
+<!--                           <h1 style="margin-top: 17px" class="font-weight-600 position-relative  " ><a th:href="@{/user/profile}" class=" text-dark" >My Profile</a></h1> -->
+<!--                         </div> -->
+                       
+                        <!-- end logo -->
+                        <div class="col-md-4 col-sm-4 col-xs-6 text-right">
+                            <div class="hamburger-menu">
+                                <div class="btn btn-hamburger border-none">
+                                    <button class="navbar-toggle mobile-toggle" type="button" id="open-button" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </button>
+                                    <!--<span class="close-menu text-white font-weight-300 alt-font text-extra-large">x</span>-->
+                                </div>
+                                <div class="hamburger-menu-wrepper xs-text-center">
+                                    <div class="btn btn-hamburger border-none">
+                                        <button class="close-menu close-button-menu" id="close-button"></button>
+                                    </div>
+                                    <div class="animation-box">
+                                        <div class="menu-middle">
+                                            <div class="menu-wrapper display-table-cell vertical-align-middle text-left">
+                                                <div class="equalize no-margin">
+                                                    <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 display-table">
+                                                        <div class="display-table-cell vertical-align-middle">
+                                                            <ul class="hamburger-menu-links alt-font">
+                                                              
+                                                             <li><a th:href="@{/home}" title="Home" ><i class="fa fa-home  " aria-hidden="true"></i> Home </a></li>
+                                                             <li><a th:href="@{/user/profile}" title="profile" ><i style="margin-right:10px" class="fa fa-user "></i>Profile</a></li>
+                                                             <li><a th:href="@{/}" title="Main Page" ><i class="fa fa-adn  "></i> Main-P</a></li>
+                                                             
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12 display-table">
+                                                        <div class="display-table-cell vertical-align-middle social-style-3">
+                                                            <span class="text-extra-large text-deep-pink alt-font display-block margin-15px-bottom">Created By Adnan</span>
+                                                            <div class="separator-line-horrizontal-medium-light2 bg-deep-pink margin-25px-tb xs-margin-15px-tb display-inline-block"></div>
+                                                            <div class="social-icon-style-9">
+                                                            <span class="text-medium alt-font display-block font-weight-300 margin-15px-bottom line-height-30">  &COPY; 2018 Powered by Adnan .</span>
+                                                              
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end header navigation -->
+            </nav>
+            <!-- end navigation -->
+
+        </header>
+        <!-- end header -->
+<!-- start hero section -->
+        <section class="wow fadeIn no-padding mobile-height parallax" data-stellar-background-ratio="0.5" style="background-image: url('images/homepage-option18-banner.jpg')">
+            <div class="container text-center one-third-screen md-height-350px sm-height-500px xs-height-auto xs-padding-40px-top xs-padding-50px-bottom">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12 display-table one-third-screen md-height-350px sm-height-500px xs-height-auto text-center wow bounceInLeft xs-height-auto xs-margin-30px-bottom">
+                        <div class="display-table-cell vertical-align-middle">
+                           <a th:href="@{/user/profile}"><img alt="Adnan" th:src="${pic}"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-12 display-table one-third-screen md-height-350px sm-height-500px xs-height-auto text-center wow bounceInRight xs-height-auto">
+                        <div class="display-table-cell vertical-align-middle">
+                            <div class="font-weight-300 alt-font title-large text-extra-dark-gray display-inline-block vertical-align-bottom margin-auto ">Error<span style="margin-left:10px" th:text="${code}" class="font-weight-600 text-bold-underline position-relative ">XXX</span></div>
+                            <div class="text-medium-gray text-small text-uppercase margin-20px-top letter-spacing-2 alt-font xs-margin-10px-top" th:text="${statue}" >XXX </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end hero section -->
+        
+        <!-- start footer --> 
+        <footer class="footer-center-logo2 " >
+            <div class="container">
+                <div class="row equalize xs-equalize-auto">
+                    <!-- start social media -->
+                    <div  class="col-lg-4 col-md-4 col-sm-5 col-xs-12 social-style-3 text-left display-table sm-text-center xs-margin-10px-bottom ">
+                        <div class="display-table-cell vertical-align-middle">
+                            <div class="social-icon-style-8 display-inline-block vertical-align-middle">
+                                <ul class="small-icon no-margin-bottom">
+                               <li>  <a th:href="@{/}" title="Main Page" ><i class="fa fa-adn  "></i></a></li>
+                               <li>  <a th:href="@{/home}" title="Home" ><i class="fa fa-home  " aria-hidden="true"></i></a></li>
+                               </ul>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end social media -->
+                    <!-- start logo -->
+                    <div  class="col-lg-4 col-md-4 col-sm-2 col-xs-12 text-center display-table xs-margin-20px-bottom">
+                        <div class="display-table-cell vertical-align-middle">
+                            <a  th:href="@{/user/profile}"><img class="footer-logo" src="/others/img/avatar-app.png" data-rjs="images/logo@2x.png" alt="Adnan"></a>
+                        </div>
+                    </div>
+                    <!-- end logo -->
+                    <!-- start copyright -->
+                    <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12 text-right alt-font text-small display-table sm-text-center">
+                        <div class="display-table-cell vertical-align-middle">
+                            &COPY; 2018 Powered by Adnan .
+                        </div>
+                    </div>
+                    <!-- end copyright -->
+                </div>
+            </div>
+        </footer>
+        <!-- end footer -->
+        <!-- start scroll to top -->
+        <a class="scroll-top-arrow" href="javascript:void(0);"><i class="fa fa-arrow-up " aria-hidden="true"></i></a>
+        <!-- end scroll to top  -->
+        <!-- javascript libraries -->
+        <script type="text/javascript" th:src="@{/profile/js/jquery.js}" src="/profile/js/jquery.js"></script>
+        <script type="text/javascript" th:src="@{/profile/js/modernizr.js}" src="/profile/js/modernizr.js"></script>
+        <script type="text/javascript" th:src="@{/profile/js/bootstrap.min.js}" src="/profile/js/bootstrap.min.js"></script>
+        <script type="text/javascript" th:src="@{/profile/js/jquery.easing.1.3.js}" src="/profile/js/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" th:src="@{/profile/js/skrollr.min.js}"  src="/profile/js/skrollr.min.js"></script>
+        <script type="text/javascript"  th:src="@{/profile/js/smooth-scroll.js}" src="/profile/js/smooth-scroll.js"></script>
+        <script type="text/javascript"  th:src="@{/profile/js/jquery.appear.js}" src="/profile/js/jquery.appear.js"></script>
+        <!-- menu navigation -->
+        <script type="text/javascript"  th:src="@{/profile/js/bootsnav.js}" src="/profile/js/bootsnav.js"></script>
+        <script type="text/javascript"  th:src="@{/profile/js/jquery.nav.js}" src="/profile/js/jquery.nav.js"></script>
+        <!-- animation -->
+        <script type="text/javascript"  th:src="@{/profile/js/wow.min.js}" src="/profile/js/wow.min.js"></script>
+        <!-- page scroll -->
+        <script type="text/javascript"  th:src="@{/profile/js/page-scroll.js}" src="/profile/js/page-scroll.js"></script>
+        <!-- swiper carousel -->
+        <script type="text/javascript"  th:src="@{/profile/js/swiper.min.js}" src="/profile/js/swiper.min.js"></script>
+        <!-- counter -->
+        <script type="text/javascript"  th:src="@{/profile/js/jquery.count-to.js}" src="/profile/js/jquery.count-to.js"></script>
+        <!-- parallax -->
+        <script type="text/javascript"  th:src="@{/profile/js/jquery.stellar.js}" src="/profile/js/jquery.stellar.js"></script>
+        <!-- magnific popup -->
+        <script type="text/javascript"  th:src="@{/profile/js/jquery.magnific-popup.min.js}" src="/profile/js/jquery.magnific-popup.min.js"></script>
+        <!-- portfolio with shorting tab -->
+        <script type="text/javascript"  th:src="@{/profile/js/isotope.pkgd.min.js}" src="/profile/js/isotope.pkgd.min.js"></script>
+        <!-- images loaded -->
+        <script type="text/javascript"  th:src="@{/profile/js/imagesloaded.pkgd.min.js}" src="/profile/js/imagesloaded.pkgd.min.js"></script>
+        <!-- pull menu -->
+        <script type="text/javascript"  th:src="@{/profile/js/classie.js}" src="/profile/js/classie.js"></script>
+        <script type="text/javascript" th:src="@{/profile/js/hamburger-menu.js}"  src="/profile/js/hamburger-menu.js"></script>
+        <!-- counter  -->
+        <script type="text/javascript" th:src="@{/profile/js/counter.js}"  src="/profile/js/counter.js"></script>
+        <!-- fit video  -->
+        <script type="text/javascript"  th:src="@{/profile/js/jquery.fitvids.js}" src="/profile/js/jquery.fitvids.js"></script>
+        <!-- equalize -->
+        <script type="text/javascript" th:src="@{/profile/js/equalize.min.js}"  src="/profile/js/equalize.min.js"></script>
+        <!-- skill bars  -->
+        <script type="text/javascript" th:src="@{/profile/js/skill.bars.jquery.js}"  src="/profile/js/skill.bars.jquery.js"></script> 
+        <!-- justified gallery  -->
+        <script type="text/javascript"  th:src="@{/profile/js/justified-gallery.min.js}" src="/profile/js/justified-gallery.min.js"></script>
+        <!--pie chart-->
+        <script type="text/javascript"  th:src="@{/profile/js/jquery.easypiechart.min.js}" src="/profile/js/jquery.easypiechart.min.js"></script>
+        <!-- instagram -->
+        <script type="text/javascript" th:src="@{/profile/js/instafeed.min.js}"  src="/profile/js/instafeed.min.js"></script>
+        <!-- retina -->
+        <script type="text/javascript"  th:src="@{/profile/js/retina.min.js}" src="/profile/js/retina.min.js"></script>
+        <!-- revolution -->
+        <script type="text/javascript" src="/profile/revolution/js/jquery.themepunch.tools.min.js"></script>
+        <script type="text/javascript" src="/profile/revolution/js/jquery.themepunch.revolution.min.js"></script>
+
+        <!-- setting -->
+        <script type="text/javascript"  th:src="@{/profile/js/main.js}" src="/profile/js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:fragment="head">
+     
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+     
+     
+     <link rel="stylesheet" href="/others/css/bootstrap.min.css" 
+    th:href="@{/others/css/bootstrap.min.css}">
+     
+<!--     <link rel="stylesheet" href="/others/vendor/bootstrap/css/bootstrap.min.css"  -->
+<!--     th:href="@{/others/vendor/bootstrap/css/bootstrap.min.css}"> -->
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="/others/vendor/font-awesome/css/font-awesome.min.css"
+    th:href="@{/others/vendor/font-awesome/css/font-awesome.min.css}" >
+<!--      -->
+    
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="/others/css/fontastic.css" 
+     th:href="@{/others/css/fontastic.css}"  >
+<!--    -->
+  
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="/others/css/style.default.css" th:href="@{/others/css/style.blue.css}" id="theme-stylesheet">
+    
+    <!-- Custom stylesheet - for changes-->
+    <link rel="stylesheet" href="/others/css/custom.css" th:href="@{/others/css/custom.css}">
+    
+<!--     Favicon -->
+<!--     <link rel="shortcut icon" th:href="@{/others/img/favicon.ico}"> -->
+     <!-- favicon -->
+        <link rel="shortcut icon"  th:href="@{/profile/images/favicon.png}"  href="/profile/images/favicon.png">
+        <link rel="apple-touch-icon" th:href="@{/profile/images/apple-touch-icon-57x57.png}" href="/profile/images/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="72x72" th:href="@{/profile/images/apple-touch-icon-72x72.png}" href="/profile/images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" th:href="@{/profile/images/apple-touch-icon-114x114.png}" href="/profile/images/apple-touch-icon-114x114.png">
+
+    <title  th:text="${titel}">Facture</title>
+    
+</head>
+<body>
+
+
+<header class="header" th:fragment="header">
+        <nav class="navbar">
+          <!-- Search Box-->
+          <div class="search-box">
+            <button class="dismiss"><i class="icon-close"></i></button>
+            <form id="searchForm" th:action="@{/home}" role="search">
+              <input type="search" name="s_id" placeholder="What are you looking for..." class="form-control">
+            </form>
+          
+          </div>
+         <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+              <!-- Navbar Header-->
+              <div class="navbar-header">
+                <!-- Navbar Brand --><a th:href="@{/home}" class="navbar-brand">
+                  <div class="brand-text brand-big"><strong th:text="${brandtext}">Facture</strong><span th:text="${brandbig}">Dashboard</span></div>
+                  <div class="brand-text brand-small"><strong th:text="${brandsmall}">FD</strong></div></a>
+                <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+              </div>
+              <!-- Navbar Menu -->
+              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                <!-- Search-->
+                <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search text-blue"></i></a></li>
+                <!-- Notifications-->
+               
+                <!-- Messages                        -->
+               
+                <!-- Languages dropdown    -->
+                <li class="nav-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="/others/img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
+<!--                   <ul aria-labelledby="languages" class="dropdown-menu"> -->
+<!--                     <li><a rel="nofollow" href="#" class="dropdown-item"> <img  src="/others/img/flags/16/DE.png"  alt="English" class="mr-2">German</a></li> -->
+<!--                     <li><a rel="nofollow" href="#" class="dropdown-item"> <img  src="/others/img/flags/16/FR.png" alt="English" class="mr-2">French                                        </a></li> -->
+<!--                   </ul> -->
+                </li>
+                <!-- Logout    -->
+                 <form method="post" class="form-validate" th:action="@{/logout}" >
+                <li class="nav-item"><button type=submit style="text-decoration: none;" class="btn btn-link text-white pl-1 txt-dc">Logout<i class="fa fa-sign-out ml-1 text-red"></i></button></li>
+              </form>
+              </ul>
+            </div>
+          </div>
+        </nav>
+     </header>
+     
+     
+     <nav class="side-navbar"  th:fragment="navBar">
+          <!-- Sidebar Header-->
+          <div class="sidebar-header d-flex align-items-center">
+            <div class="avatar"><img src="/others/img/avatar-app.png" alt="..." class="img-fluid rounded-circle"></div>
+            <div class="title" sec:authorize="hasRole('ROLE_ROOT')">
+              <h1 class="h4 text-center">&copy; Adnan</h1>
+              <p>Full-Stack Developer</p>
+            </div>
+<!--             mr-1 mt-1 ml-1  -->
+             <div class="title" th:if="${online != 'ROOT'}">
+             <h1 class="h4"> Welcome</h1> 
+             <div class="form-inline " >   <p th:text="${userInfo}"></p> </div>
+            </div>
+          </div>
+          <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
+       
+          <ul class="list-unstyled">
+                    <li class="active"><a th:href="@{/home}"> <i class="icon-home"></i>Home </a></li>                    
+                    <li><a th:href="@{/}"> <i class="fa fa-adn fa-2x" aria-hidden="true"></i> Main Page </a></li>
+                    <li><a th:href="@{/user/profile}"> <i class="fa fa-user-circle "></i>My Profile </a></li>
+                    <li><a th:href="@{/user/profile?active=Tranche Info}"> <i class="icon-padnote"></i>Tranche Info </a></li>
+                    <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>User Settings </a>
+                     <form th:action="@{/user/remove/account}" method="post">
+                      <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                        <li><a th:href="@{/user/profile?active=Account Setting}">Change Password</a></li>
+                        <li th:if="${online} !='ROOT'"><a th:href="@{/user/profile?active=Add Locale}">Add Locale</a></li>
+                        <li><a th:href="@{/user/profile?active=Account Setting}">Remove My Account</a></li>
+                      </ul>
+                      </form>
+                    </li>
+                    </ul>
+     </nav>
+     
+            <div class="container-fluid" th:fragment="pageHeader">
+              <h2 class="no-margin-bottom" th:text="${brandbig}" >A-Dashboard</h2>
+            </div>
+    
+     
+     
+    
+    
+     <footer class="main-footer" th:fragment="footer">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>A7E &copy; 2018</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <p>Design by Adnan</p>
+                  <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                </div>
+              </div>
+            </div>
+     </footer>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ <div th:fragment="script">
+    <script  th:src="@{/others/vendor/jquery/jquery.min.js}" src="/others/vendor/jquery/jquery.min.js"></script>
+    <script th:src="@{/others/vendor/popper.js/umd/popper.min.js}" src="/others/vendor/popper.js/umd/popper.min.js"> </script>
+    <script th:src="@{/others/vendor/bootstrap/js/bootstrap.min.js}" src="/others/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script  th:src="@{/others/vendor/jquery.cookie/jquery.cookie.js}" src="/others/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script th:src="@{/others/vendor/chart.js/Chart.min.js}" src="/others/vendor/chart.js/Chart.min.js"></script>
+    <script  th:src="@{/others/vendor/jquery-validation/jquery.validate.min.js}" src="/others/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script th:src="@{/others/js/charts-home.js}" src="/others/js/charts-home.js"></script>
+    <!-- Main File-->
+    <script th:src="@{/others/js/front.js}" src="/others/js/front.js"></script>
+    </div>
+          
+</body>
+</html>
